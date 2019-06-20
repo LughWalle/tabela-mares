@@ -1,5 +1,7 @@
 <?php 
 
+<?php 
+
 $path = "txt/";
 $diret = dir($path);
 
@@ -13,21 +15,25 @@ while ($arquivo = $diret -> read()) {
 	echo "<br>\r\n" . 'arquivo: ' . $arquivo . "\r\n<br>";
 	foreach ($rows as $lineNum => $row) {
 		$row = utf8_encode($row);
-		//echo $row . "<br><br>";
+		
 		$row = preg_replace('/( )+/', ' ', $row);   
 		$row = explode(" ", $row);
+		//echo $row[0] . "<br><br>";
 		
-		foreach ($row as $wordnum => $item) {
+		//foreach ($row as $wordnum => $item) {
 			$day = date("d");
 			$month = date("m");
 			$year = date("Y");
-			$date = $day . "/" . $month . "/" . $year;
+			$dat = $day . $month . $year;
+			//$date = explode("/", strtotime($row[0]));
+			
 
-			if ($item >= $date == '##/##/####') {
-				echo  "item:" . $item . "<br>";
+			if ($row[0] >= $dat){
+				echo "item:" . $row[0] . "<br>";
+				//echo $date . "<br>";
 			}
 			
-		}
+		//}
 		//echo $rows . "<br>";
 		
 
